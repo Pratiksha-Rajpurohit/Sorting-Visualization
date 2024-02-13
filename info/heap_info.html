@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="en">
+  <head>
+
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-4HHP888F7Y"></script>
+	<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-4HHP888F7Y');
+	</script>
+
+  <link rel="stylesheet" type="text/css" href="styleWeb.css">
+
+  <!-- codestyle -->
+  <link rel="stylesheet" type="text/css" href="code_style.css">
+
+  <!-- <link rel="stylesheet" type="text/css" href="style_change.css"> -->
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Sorting Visualizer</title>
+  <meta name="description" content="" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+      <!-- CSS only -->
+  <link rel="stylesheet" href="style.css" />
+
+
+    <!-- Required meta tags -->
+    <!-- <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+
+    <!-- css Link -->
+    
+     <link rel="stylesheet" type="text/css" href="styleWeb.css">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@500&display=swap" rel="stylesheet">
+
+<!-- prism -->
+<link rel="stylesheet" href="prism.css">
+
+    <title>Hello, world!</title>
+  </head>
+  <body>
+
+
+<section  class="main-heading  bg-light my-5 px-10 ">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 col-10 col-xxl-5 mx-auto  sort_info " >
+
+          <h3>Heap Sort</h3>
+          <p >Heap sort is a comparison-based sorting technique based on Binary Heap data structure.
+             It is similar to the selection sort where we first find the minimum element and place the minimum element at the beginning. Repeat the same process for the remaining elements.</p>
+          <h4>Time Complexity:</h4>
+          <p>1)The best-case time complexity of heap sort is O(n logn)<br>
+            2)The average case time complexity of heap sort is O(n log n).<br>
+            3)The worst-case time complexity of heap sort is O(n log n).</p>
+          <h4>Space Complexity:</h4>
+          <p>The space complexity of Heap sort is O(1).</p>
+        
+        
+            </div>
+        <div class="col-md-5 col-10 col-xxl-5 mx-auto ">
+           <div class="selector">
+              <p class="select" id="java" style="background: linear-gradient(0deg, rgb(124, 137, 248), rgb(84, 102, 255));">Java</p>
+              <p class="select" id="python" style="background:  rgb(165, 187, 201);">python</p>
+              <p class="select" id="javaScript" style="background:  rgb(165, 187, 201);">JavaScript</p>
+              <p class="select" id="c++" style="background:  rgb(165, 187, 201);">c</p>
+
+           </div>
+          <div class="box" >
+            <div class="code-wrape" >
+               <pre tableindex="0" class="croma" >
+                 <code id="code_javaScript" class="language-javaScript">
+                    
+                       
+                    // JavaScript program for implementation
+                    // of Heap Sort
+                    
+                        function sort( arr)
+                        {
+                            var N = arr.length;
+                    
+                            // Build heap (rearrange array)
+                            for (var i = Math.floor(N / 2) - 1; i >= 0; i--)
+                                heapify(arr, N, i);
+                    
+                            // One by one extract an element from heap
+                            for (var i = N - 1; i > 0; i--) {
+                                // Move current root to end
+                                var temp = arr[0];
+                                arr[0] = arr[i];
+                                arr[i] = temp;
+                    
+                                // call max heapify on the reduced heap
+                                heapify(arr, i, 0);
+                            }
+                        }
+                    
+                        // To heapify a subtree rooted with node i which is
+                        // an index in arr[]. n is size of heap
+                        function heapify(arr, N, i)
+                        {
+                            var largest = i; // Initialize largest as root
+                            var l = 2 * i + 1; // left = 2*i + 1
+                            var r = 2 * i + 2; // right = 2*i + 2
+                    
+                            // If left child is larger than root
+                            if (l < N && arr[l] > arr[largest])
+                                largest = l;
+                    
+                            // If right child is larger than largest so far
+                            if (r < N && arr[r] > arr[largest])
+                                largest = r;
+                    
+                            // If largest is not root
+                            if (largest != i) {
+                                var swap = arr[i];
+                                arr[i] = arr[largest];
+                                arr[largest] = swap;
+                    
+                                // Recursively heapify the affected sub-tree
+                                heapify(arr, N, largest);
+                            }
+                        }
+                    
+                        /* A utility function to print array of size n */
+                        function printArray(arr)
+                        {
+                            var N = arr.length;
+                            for (var i = 0; i < N; ++i)
+                                document.write(arr[i] + " ");
+                            
+                        }
+                    
+                    
+                        var arr = [12, 11, 13, 5, 6, 7];
+                        var N = arr.length;
+                    
+                        sort(arr);
+                    
+                        document.write( "Sorted array is");
+                        printArray(arr, N);
+                    
+                    
+                    
+                    
+                       
+                    
+                </code>
+                 <code id="code_java" class="language-java">
+                   
+                   
+	
+                    // Java program for implementation of Heap Sort
+
+                    public class HeapSort {
+                        public void sort(int arr[])
+                        {
+                            int N = arr.length;
+                    
+                            // Build heap (rearrange array)
+                            for (int i = N / 2 - 1; i >= 0; i--)
+                                heapify(arr, N, i);
+                    
+                            // One by one extract an element from heap
+                            for (int i = N - 1; i > 0; i--) {
+                                // Move current root to end
+                                int temp = arr[0];
+                                arr[0] = arr[i];
+                                arr[i] = temp;
+                    
+                                // call max heapify on the reduced heap
+                                heapify(arr, i, 0);
+                            }
+                        }
+                    
+                        // To heapify a subtree rooted with node i which is
+                        // an index in arr[]. n is size of heap
+                        void heapify(int arr[], int N, int i)
+                        {
+                            int largest = i; // Initialize largest as root
+                            int l = 2 * i + 1; // left = 2*i + 1
+                            int r = 2 * i + 2; // right = 2*i + 2
+                    
+                            // If left child is larger than root
+                            if (l < N && arr[l] > arr[largest])
+                                largest = l;
+                    
+                            // If right child is larger than largest so far
+                            if (r < N && arr[r] > arr[largest])
+                                largest = r;
+                    
+                            // If largest is not root
+                            if (largest != i) {
+                                int swap = arr[i];
+                                arr[i] = arr[largest];
+                                arr[largest] = swap;
+                    
+                                // Recursively heapify the affected sub-tree
+                                heapify(arr, N, largest);
+                            }
+                        }
+                    
+                        /* A utility function to print array of size n */
+                        static void printArray(int arr[])
+                        {
+                            int N = arr.length;
+                    
+                            for (int i = 0; i < N; ++i)
+                                System.out.print(arr[i] + " ");
+                            System.out.println();
+                        }
+                    
+                        // Driver's code
+                        public static void main(String args[])
+                        {
+                            int arr[] = { 12, 11, 13, 5, 6, 7 };
+                            int N = arr.length;
+                    
+                            // Function call
+                            HeapSort ob = new HeapSort();
+                            ob.sort(arr);
+                    
+                            System.out.println("Sorted array is");
+                            printArray(arr);
+                        }
+                    }
+                    
+
+                    
+
+              </code>
+
+              <code id="code_python" class="language-python">
+               
+                # Python program for implementation of heap Sort
+
+                # To heapify subtree rooted at index i.
+                # n is size of heap
+                
+                
+                def heapify(arr, N, i):
+                    largest = i # Initialize largest as root
+                    l = 2 * i + 1	 # left = 2*i + 1
+                    r = 2 * i + 2	 # right = 2*i + 2
+                
+                    # See if left child of root exists and is
+                    # greater than root
+                    if l < N and arr[largest] < arr[l]:
+                        largest = l
+                
+                    # See if right child of root exists and is
+                    # greater than root
+                    if r < N and arr[largest] < arr[r]:
+                        largest = r
+                
+                    # Change root, if needed
+                    if largest != i:
+                        arr[i], arr[largest] = arr[largest], arr[i] # swap
+                
+                        # Heapify the root.
+                        heapify(arr, N, largest)
+                
+                # The main function to sort an array of given size
+                
+                
+                def heapSort(arr):
+                    N = len(arr)
+                
+                    # Build a maxheap.
+                    for i in range(N//2 - 1, -1, -1):
+                        heapify(arr, N, i)
+                
+                    # One by one extract elements
+                    for i in range(N-1, 0, -1):
+                        arr[i], arr[0] = arr[0], arr[i] # swap
+                        heapify(arr, i, 0)
+                
+                
+                # Driver's code
+                if __name__ == '__main__':
+                    arr = [12, 11, 13, 5, 6, 7]
+                
+                    # Function call
+                    heapSort(arr)
+                    N = len(arr)
+                
+                    print("Sorted array is")
+                    for i in range(N):
+                        print("%d" % arr[i], end=" ")
+               
+                
+                
+                
+                
+                
+                
+              </code>
+
+              <code id="code_c++" class="language-c">
+
+                // Heap Sort in C
+
+                #include <stdio.h>
+                
+                // Function to swap the position of two elements
+                
+                void swap(int* a, int* b)
+                {
+                
+                    int temp = *a;
+                
+                    *a = *b;
+                
+                    *b = temp;
+                }
+                
+                // To heapify a subtree rooted with node i
+                // which is an index in arr[].
+                // n is size of heap
+                void heapify(int arr[], int N, int i)
+                {
+                    // Find largest among root, left child and right child
+                
+                    // Initialize largest as root
+                    int largest = i;
+                
+                    // left = 2*i + 1
+                    int left = 2 * i + 1;
+                
+                    // right = 2*i + 2
+                    int right = 2 * i + 2;
+                
+                    // If left child is larger than root
+                    if (left < N && arr[left] > arr[largest])
+                
+                        largest = left;
+                
+                    // If right child is larger than largest
+                    // so far
+                    if (right < N && arr[right] > arr[largest])
+                
+                        largest = right;
+                
+                    // Swap and continue heapifying if root is not largest
+                    // If largest is not root
+                    if (largest != i) {
+                
+                        swap(&arr[i], &arr[largest]);
+                
+                        // Recursively heapify the affected
+                        // sub-tree
+                        heapify(arr, N, largest);
+                    }
+                }
+                
+                // Main function to do heap sort
+                void heapSort(int arr[], int N)
+                {
+                
+                    // Build max heap
+                    for (int i = N / 2 - 1; i >= 0; i--)
+                
+                        heapify(arr, N, i);
+                
+                    // Heap sort
+                    for (int i = N - 1; i >= 0; i--) {
+                
+                        swap(&arr[0], &arr[i]);
+                
+                        // Heapify root element to get highest element at
+                        // root again
+                        heapify(arr, i, 0);
+                    }
+                }
+                
+                // A utility function to print array of size n
+                void printArray(int arr[], int N)
+                {
+                    for (int i = 0; i < N; i++)
+                        printf("%d ", arr[i]);
+                    printf("\n");
+                }
+                
+                // Driver's code
+                int main()
+                {
+                    int arr[] = { 12, 11, 13, 5, 6, 7 };
+                    int N = sizeof(arr) / sizeof(arr[0]);
+                
+                    // Function call
+                    heapSort(arr, N);
+                    printf("Sorted array is\n");
+                    printArray(arr, N);
+                }
+                
+                
+                
+
+
+              </code>
+            </pre>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+   </section>
+
+
+    <!-- about us Section end -->
+
+    <!-- our services secction start -->
+
+    </body>
+
+    <script src="prism.js"></script>
+    <script src="script_change.js"></script>
+    <script src="script_change2.js"></script>
+</html>

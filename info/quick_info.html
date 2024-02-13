@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="en">
+  <head>
+
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-4HHP888F7Y"></script>
+	<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-4HHP888F7Y');
+	</script>
+
+  <link rel="stylesheet" type="text/css" href="styleWeb.css">
+
+  <!-- codestyle -->
+  <link rel="stylesheet" type="text/css" href="code_style.css">
+
+  <!-- <link rel="stylesheet" type="text/css" href="style_change.css"> -->
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Sorting Visualizer</title>
+  <meta name="description" content="" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+      <!-- CSS only -->
+  <link rel="stylesheet" href="style.css" />
+
+
+    <!-- Required meta tags -->
+    <!-- <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+
+    <!-- css Link -->
+    
+     <link rel="stylesheet" type="text/css" href="styleWeb.css">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@500&display=swap" rel="stylesheet">
+
+<!-- prism -->
+<link rel="stylesheet" href="prism.css">
+
+    <title>Hello, world!</title>
+  </head>
+  <body>
+
+
+<section  class="main-heading  bg-light my-5 px-10 ">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 col-10 col-xxl-5 mx-auto  sort_info " >
+
+          <h3>Quick Sort</h3>
+          <p >Quicksort is a divide-and-conquer algorithm. 
+            It works by selecting a 'pivot' element from the array and
+             partitioning the other elements into two sub-arrays, according to whether they are less than or greater than the pivot</p>
+          <h4>Time complexity:</h4>
+          <p> 1) The best case time complexity of quick sort is O(n*log n)<br>
+            2)The average case time complexity of quick sort is O(n*log n)<br>
+            3)The worst case time complexity of quick sort is O(n * log n)</p>
+
+            <h4>Space complexity:</h4>
+            <p>Space complexity of quick sort is O(n*log n)</p>
+        
+        
+        
+            </div>
+        <div class="col-md-5 col-10 col-xxl-5 mx-auto ">
+           <div class="selector">
+              <p class="select" id="java" style="background: linear-gradient(0deg, rgb(124, 137, 248), rgb(84, 102, 255));">Java</p>
+              <p class="select" id="python" style="background:  rgb(165, 187, 201);">python</p>
+              <p class="select" id="javaScript" style="background:  rgb(165, 187, 201);">JavaScript</p>
+              <p class="select" id="c++" style="background:  rgb(165, 187, 201);">c</p>
+
+           </div>
+          <div class="box" >
+            <div class="code-wrape" >
+               <pre tableindex="0" class="croma" >
+                 <code id="code_javaScript" class="language-javaScript">
+                    
+                        // Javascript implementation of QuickSort
+                        
+                        
+                        // A utility function to swap two elements
+                        function swap(arr, i, j) {
+                            let temp = arr[i];
+                            arr[i] = arr[j];
+                            arr[j] = temp;
+                        }
+                        
+                        /* This function takes last element as pivot, places
+                        the pivot element at its correct position in sorted
+                        array, and places all smaller (smaller than pivot)
+                        to left of pivot and all greater elements to right
+                        of pivot */
+                        function partition(arr, low, high) {
+                        
+                            // pivot
+                            let pivot = arr[high];
+                        
+                            // Index of smaller element and
+                            // indicates the right position
+                            // of pivot found so far
+                            let i = (low - 1);
+                        
+                            for (let j = low; j <= high - 1; j++) {
+                        
+                                // If current element is smaller
+                                // than the pivot
+                                if (arr[j] < pivot) {
+                        
+                                    // Increment index of
+                                    // smaller element
+                                    i++;
+                                    swap(arr, i, j);
+                                }
+                            }
+                            swap(arr, i + 1, high);
+                            return (i + 1);
+                        }
+                        
+                        /* The main function that implements QuickSort
+                                arr[] --> Array to be sorted,
+                                low --> Starting index,
+                                high --> Ending index
+                        */
+                        function quickSort(arr, low, high) {
+                            if (low < high) {
+                        
+                                // pi is partitioning index, arr[p]
+                                // is now at right place
+                                let pi = partition(arr, low, high);
+                        
+                                // Separately sort elements before
+                                // partition and after partition
+                                quickSort(arr, low, pi - 1);
+                                quickSort(arr, pi + 1, high);
+                            }
+                        }
+                        
+                        // Function to print an array
+                        function printArray(arr, size) {
+                            for (let i = 0; i < size; i++)
+                                document.write(arr[i] + " ");
+                        
+                            document.write("<br>");
+                        }
+                        
+                        // Driver Code
+                        
+                        let arr = [10, 7, 8, 9, 1, 5];
+                        let n = arr.length;
+                        
+                        quickSort(arr, 0, n - 1);
+                        document.write("Sorted array: <br>");
+                        printArray(arr, n);
+                        
+                        
+                        
+                        
+                    
+                </code>
+                 <code id="code_java" class="language-java">
+// Java implementation of QuickSort
+import java.io.*;
+
+class GFG {
+
+	// A utility function to swap two elements
+	static void swap(int[] arr, int i, int j)
+	{
+		int temp = arr[i];
+		arr[i] = arr[j];
+		arr[j] = temp;
+	}
+
+	/* This function takes last element as pivot, places
+	the pivot element at its correct position in sorted
+	array, and places all smaller (smaller than pivot)
+	to left of pivot and all greater elements to right
+	of pivot */
+	static int partition(int[] arr, int low, int high)
+	{
+
+		// pivot
+		int pivot = arr[high];
+
+		// Index of smaller element and
+		// indicates the right position
+		// of pivot found so far
+		int i = (low - 1);
+
+		for (int j = low; j <= high - 1; j++) {
+
+			// If current element is smaller
+			// than the pivot
+			if (arr[j] < pivot) {
+
+				// Increment index of
+				// smaller element
+				i++;
+				swap(arr, i, j);
+			}
+		}
+		swap(arr, i + 1, high);
+		return (i + 1);
+	}
+
+	/* The main function that implements QuickSort
+			arr[] --> Array to be sorted,
+			low --> Starting index,
+			high --> Ending index
+	*/
+	static void quickSort(int[] arr, int low, int high)
+	{
+		if (low < high) {
+
+			// pi is partitioning index, arr[p]
+			// is now at right place
+			int pi = partition(arr, low, high);
+
+			// Separately sort elements before
+			// partition and after partition
+			quickSort(arr, low, pi - 1);
+			quickSort(arr, pi + 1, high);
+		}
+	}
+
+	// Function to print an array
+	static void printArray(int[] arr, int size)
+	{
+		for (int i = 0; i < size; i++)
+			System.out.print(arr[i] + " ");
+
+		System.out.println();
+	}
+
+	// Driver Code
+	public static void main(String[] args)
+	{
+		int[] arr = { 10, 7, 8, 9, 1, 5 };
+		int n = arr.length;
+
+		quickSort(arr, 0, n - 1);
+		System.out.println("Sorted array: ");
+		printArray(arr, n);
+	}
+}
+
+
+
+                    
+
+              </code>
+
+              <code id="code_python" class="language-python">
+  # Python3 implementation of QuickSort
+
+
+# Function to find the partition position
+def partition(array, low, high):
+
+	# Choose the rightmost element as pivot
+	pivot = array[high]
+
+	# Pointer for greater element
+	i = low - 1
+
+	# Traverse through all elements
+	# compare each element with pivot
+	for j in range(low, high):
+		if array[j] <= pivot:
+			# If element smaller than pivot is found
+			# swap it with the greater element pointed by i
+			i = i + 1
+
+			# Swapping element at i with element at j
+			(array[i], array[j]) = (array[j], array[i])
+
+	# Swap the pivot element with
+	# e greater element specified by i
+	(array[i + 1], array[high]) = (array[high], array[i + 1])
+
+	# Return the position from where partition is done
+	return i + 1
+
+# Function to perform quicksort
+
+
+def quick_sort(array, low, high):
+	if low < high:
+
+		# Find pivot element such that
+		# element smaller than pivot are on the left
+		# element greater than pivot are on the right
+		pi = partition(array, low, high)
+
+		# Recursive call on the left of pivot
+		quick_sort(array, low, pi - 1)
+
+		# Recursive call on the right of pivot
+		quick_sort(array, pi + 1, high)
+
+
+# Driver code
+array = [10, 7, 8, 9, 1, 5]
+quick_sort(array, 0, len(array) - 1)
+
+print(f'Sorted array: {array}')
+
+
+
+                
+                
+              </code>
+
+              <code id="code_c++" class="language-c">
+
+                // Quick sort in C
+
+                #include <stdio.h>
+                
+                // function to swap elements
+                void swap(int *a, int *b) {
+                  int t = *a;
+                  *a = *b;
+                  *b = t;
+                }
+                
+                // function to find the partition position
+                int partition(int array[], int low, int high) {
+                  
+                  // select the rightmost element as pivot
+                  int pivot = array[high];
+                  
+                  // pointer for greater element
+                  int i = (low - 1);
+                
+                  // traverse each element of the array
+                  // compare them with the pivot
+                  for (int j = low; j < high; j++) {
+                    if (array[j] <= pivot) {
+                        
+                      // if element smaller than pivot is found
+                      // swap it with the greater element pointed by i
+                      i++;
+                      
+                      // swap element at i with element at j
+                      swap(&array[i], &array[j]);
+                    }
+                  }
+                
+                  // swap the pivot element with the greater element at i
+                  swap(&array[i + 1], &array[high]);
+                  
+                  // return the partition point
+                  return (i + 1);
+                }
+                
+                void quickSort(int array[], int low, int high) {
+                  if (low < high) {
+                    
+                    // find the pivot element such that
+                    // elements smaller than pivot are on left of pivot
+                    // elements greater than pivot are on right of pivot
+                    int pi = partition(array, low, high);
+                    
+                    // recursive call on the left of pivot
+                    quickSort(array, low, pi - 1);
+                    
+                    // recursive call on the right of pivot
+                    quickSort(array, pi + 1, high);
+                  }
+                }
+                
+                // function to print array elements
+                void printArray(int array[], int size) {
+                  for (int i = 0; i < size; ++i) {
+                    printf("%d  ", array[i]);
+                  }
+                  printf("\n");
+                }
+                
+                // main function
+                int main() {
+                  int data[] = {8, 7, 2, 1, 0, 9, 6};
+                  
+                  int n = sizeof(data) / sizeof(data[0]);
+                  
+                  printf("Unsorted Array\n");
+                  printArray(data, n);
+                  
+                  // perform quicksort on data
+                  quickSort(data, 0, n - 1);
+                  
+                  printf("Sorted array in ascending order: \n");
+                  printArray(data, n);
+                }
+
+
+              </code>
+            </pre>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+   </section>
+
+
+    <!-- about us Section end -->
+
+    <!-- our services secction start -->
+
+    </body>
+
+    <script src="prism.js"></script>
+    <script src="script_change.js"></script>
+    <script src="script_change2.js"></script>
+</html>

@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+  <head>
+
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-4HHP888F7Y"></script>
+	<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-4HHP888F7Y');
+	</script>
+
+  <link rel="stylesheet" type="text/css" href="styleWeb.css">
+
+  <!-- codestyle -->
+  <link rel="stylesheet" type="text/css" href="code_style.css">
+
+  <!-- <link rel="stylesheet" type="text/css" href="style_change.css"> -->
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Sorting Visualizer</title>
+  <meta name="description" content="" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+      <!-- CSS only -->
+  <link rel="stylesheet" href="style.css" />
+
+
+    <!-- Required meta tags -->
+    <!-- <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+
+    <!-- css Link -->
+    
+     <link rel="stylesheet" type="text/css" href="styleWeb.css">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@500&display=swap" rel="stylesheet">
+
+<!-- prism -->
+<link rel="stylesheet" href="prism.css">
+
+    <title>Hello, world!</title>
+  </head>
+  <body>
+
+
+<section  class="main-heading  bg-light my-5 px-10 ">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 col-10 col-xxl-5 mx-auto  sort_info " >
+
+          <h3>Bubble Sort</h3>
+          <p >Bubble Sort is the simplest sorting algorithm that
+             works by repeatedly swapping adjacent elements if they are in the wrong order. This procedure is repeated until no swaps are required, indicating that the list has been sorted.</p>
+          <h4>Time Complexity:</h4>
+          <p>1)The best case time complexity of bubble sort is O(n).<br>
+            2)The average case time complexity of bubble sort is O(n^2).<br>
+            3)The worst case time complexity of bubble sort is O(n^2).
+           </p>
+            <h4> Space Complexity:</h4>
+          <p>The space complexity of bubble sort is O(1).</p>
+        
+        
+        
+            </div>
+        <div class="col-md-5 col-10 col-xxl-5 mx-auto ">
+           <div class="selector">
+              <p class="select" id="java" style="background: linear-gradient(0deg, rgb(124, 137, 248), rgb(84, 102, 255));">Java</p>
+              <p class="select" id="python" style="background:  rgb(165, 187, 201);">python</p>
+              <p class="select" id="javaScript" style="background:  rgb(165, 187, 201);">JavaScript</p>
+              <p class="select" id="c++" style="background:  rgb(165, 187, 201);">c</p>
+
+           </div>
+          <div class="box" >
+            <div class="code-wrape" >
+               <pre tableindex="0" class="croma" >
+                 <code id="code_javaScript" class="language-javaScript">
+      //javaScript program for the implementation of bubble sort
+                    function swap(arr, xp, yp)
+                    {
+                      var temp = arr[xp];
+                      arr[xp] = arr[yp];
+                      arr[yp] = temp;
+                    }
+                    
+                    // An optimized version of Bubble Sort
+                    function bubbleSort( arr, n)
+                    {
+                    var i, j;
+                    for (i = 0; i < n-1; i++)
+                    {
+                      for (j = 0; j < n-i-1; j++)
+                      {
+                        if (arr[j] > arr[j+1])
+                        {
+                        swap(arr,j,j+1);
+                        
+                        }
+                      }
+                    
+                    }
+                    }
+                    
+                    /* Function to print an array */
+                    function printArray(arr, size)
+                    {
+                      var i;
+                      for (i=0; i < size; i++)
+                        document.write(arr[i]+ " ");
+                      document.write("\n");
+                    }
+                    
+                    // Driver program to test above functions
+                    var arr = [5, 1, 4, 2, 8];
+                      var n = 5;
+                      document.write("UnSorted array: \n");
+                      printArray(arr, n);
+                    
+                      bubbleSort(arr, n);
+                      document.write("Sorted array: \n");
+                      printArray(arr, n);
+                   
+                    
+                </code>
+                 <code id="code_java" class="language-javaScript">
+// Java program for implementation of Bubble Sort
+import java.util.*;
+
+class BubbleSort {
+	void bubbleSort(int arr[])
+	{
+		int n = arr.length;
+		for (int i = 0; i < n - 1; i++)
+			for (int j = 0; j < n - i - 1; j++)
+				if (arr[j] > arr[j + 1]) {
+					// swap arr[j+1] and arr[j]
+					int temp = arr[j];
+					arr[j] = arr[j + 1];
+					arr[j + 1] = temp;
+				}
+	}
+
+	/* Prints the array */
+	void printArray(int arr[])
+	{
+		int n = arr.length;
+		for (int i = 0; i < n; ++i)
+			System.out.print(arr[i] + " ");
+		System.out.println();
+	}
+
+	// Driver method to test above
+	public static void main(String args[])
+	{
+		BubbleSort ob = new BubbleSort();
+		int arr[] = { 5, 1, 4, 2, 8 };
+		ob.bubbleSort(arr);
+		System.out.println("Sorted array");
+		ob.printArray(arr);
+	}
+}
+
+
+
+              </code>
+
+              <code id="code_python" class="language-python">
+            # Python program for implementation of Bubble Sort
+
+
+                def bubbleSort(arr):
+                  n = len(arr)
+                
+                  # Traverse through all array elements
+                  for i in range(n):
+                
+                    # Last i elements are already in place
+                    for j in range(0, n-i-1):
+                
+                      # traverse the array from 0 to n-i-1
+                      # Swap if the element found is greater
+                      # than the next element
+                      if arr[j] > arr[j+1]:
+                        arr[j], arr[j+1] = arr[j+1], arr[j]
+                
+                
+                # Driver code to test above
+                if __name__ == "__main__":
+                arr = [5, 1, 4, 2, 8]
+                
+                bubbleSort(arr)
+                
+                print("Sorted array is:")
+                for i in range(len(arr)):
+                  print("%d" % arr[i], end=" ")
+                
+                
+              </code>
+
+              <code id="code_c++" class="language-c">
+
+                
+                // C program for implementation of Bubble sort
+                #include <stdio.h>
+                
+                void swap(int* xp, int* yp)
+                {
+                  int temp = *xp;
+                  *xp = *yp;
+                  *yp = temp;
+                }
+                
+                // A function to implement bubble sort
+                void bubbleSort(int arr[], int n)
+                {
+                  int i, j;
+                  for (i = 0; i < n - 1; i++)
+                
+                    // Last i elements are already in place
+                    for (j = 0; j < n - i - 1; j++)
+                      if (arr[j] > arr[j + 1])
+                        swap(&arr[j], &arr[j + 1]);
+                }
+                
+                /* Function to print an array */
+                void printArray(int arr[], int size)
+                {
+                  int i;
+                  for (i = 0; i < size; i++)
+                    printf("%d ", arr[i]);
+                  printf("\n");
+                }
+                
+                // Driver program to test above functions
+                int main()
+                {
+                  int arr[] = { 5, 1, 4, 2, 8 };
+                  int n = sizeof(arr) / sizeof(arr[0]);
+                  bubbleSort(arr, n);
+                  printf("Sorted array: \n");
+                  printArray(arr, n);
+                  return 0;
+                }
+                
+
+              </code>
+            </pre>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+   </section>
+
+
+    <!-- about us Section end -->
+
+    <!-- our services secction start -->
+
+    </body>
+
+    <script src="prism.js"></script>
+    <script src="script_change.js"></script>
+    <script src="script_change2.js"></script>
+</html>

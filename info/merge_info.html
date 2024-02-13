@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="en">
+  <head>
+
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-4HHP888F7Y"></script>
+	<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-4HHP888F7Y');
+	</script>
+
+  <link rel="stylesheet" type="text/css" href="styleWeb.css">
+
+  <!-- codestyle -->
+  <link rel="stylesheet" type="text/css" href="code_style.css">
+
+  <!-- <link rel="stylesheet" type="text/css" href="style_change.css"> -->
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Sorting Visualizer</title>
+  <meta name="description" content="" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+      <!-- CSS only -->
+  <link rel="stylesheet" href="style.css" />
+
+
+    <!-- Required meta tags -->
+    <!-- <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+
+    <!-- css Link -->
+    
+     <link rel="stylesheet" type="text/css" href="styleWeb.css">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@500&display=swap" rel="stylesheet">
+
+<!-- prism -->
+<link rel="stylesheet" href="prism.css">
+
+  </head>
+  <body>
+
+
+<section  class="main-heading  bg-light my-5 px-10 ">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 col-10 col-xxl-5 mx-auto  sort_info " >
+
+          <h3>Merge Sort</h3>
+          <p >Merge sort is one of the most efficient sorting algorithms. It is based on the divide-and-conquer strategy.
+             Merge sort continuously cuts down a list into multiple sublists until each has only one item, then merges those sublists into a sorted list.</p>
+          <h4>Time complexity:</h4>
+          <p>The time complexity of Merge Sort isθ(Nlog(N)) 
+            in all 3 cases (worst, average, and best) as merge sort always divides the array into two halves and takes linear time to merge two halves.  </p>
+            <h4>Space complexity:</h4>
+            <p> Space complexity of Merge sort is O(n).</p>
+        
+        
+            </div>
+        <div class="col-md-5 col-10 col-xxl-5 mx-auto ">
+           <div class="selector">
+              <p class="select" id="java" style="background: linear-gradient(0deg, rgb(124, 137, 248), rgb(84, 102, 255));">Java</p>
+              <p class="select" id="python" style="background:  rgb(165, 187, 201);">python</p>
+              <p class="select" id="javaScript" style="background:  rgb(165, 187, 201);">JavaScript</p>
+              <p class="select" id="c++" style="background:  rgb(165, 187, 201);">c</p>
+
+           </div>
+          <div class="box" >
+            <div class="code-wrape" >
+               <pre tableindex="0" class="croma" >
+                 <code id="code_javaScript" class="language-javaScript">
+
+
+                        // JavaScript program for Merge Sort
+                        
+                        // Merges two subarrays of arr[].
+                        // First subarray is arr[l..m]
+                        // Second subarray is arr[m+1..r]
+                        function merge(arr, l, m, r)
+                        {
+                            var n1 = m - l + 1;
+                            var n2 = r - m;
+                        
+                            // Create temp arrays
+                            var L = new Array(n1);
+                            var R = new Array(n2);
+                        
+                            // Copy data to temp arrays L[] and R[]
+                            for (var i = 0; i < n1; i++)
+                                L[i] = arr[l + i];
+                            for (var j = 0; j < n2; j++)
+                                R[j] = arr[m + 1 + j];
+                        
+                            // Merge the temp arrays back into arr[l..r]
+                        
+                            // Initial index of first subarray
+                            var i = 0;
+                        
+                            // Initial index of second subarray
+                            var j = 0;
+                        
+                            // Initial index of merged subarray
+                            var k = l;
+                        
+                            while (i < n1 && j < n2) {
+                                if (L[i] <= R[j]) {
+                                    arr[k] = L[i];
+                                    i++;
+                                }
+                                else {
+                                    arr[k] = R[j];
+                                    j++;
+                                }
+                                k++;
+                            }
+                        
+                            // Copy the remaining elements of
+                            // L[], if there are any
+                            while (i < n1) {
+                                arr[k] = L[i];
+                                i++;
+                                k++;
+                            }
+                        
+                            // Copy the remaining elements of
+                            // R[], if there are any
+                            while (j < n2) {
+                                arr[k] = R[j];
+                                j++;
+                                k++;
+                            }
+                        }
+                        
+                        // l is for left index and r is
+                        // right index of the sub-array
+                        // of arr to be sorted */
+                        function mergeSort(arr,l, r){
+                            if(l>=r){
+                                return;//returns recursively
+                            }
+                            var m =l+ parseInt((r-l)/2);
+                            mergeSort(arr,l,m);
+                            mergeSort(arr,m+1,r);
+                            merge(arr,l,m,r);
+                        }
+                        
+                        // UTILITY FUNCTIONS
+                        // Function to print an array
+                        function printArray( A, size)
+                        {
+                            for (var i = 0; i < size; i++)
+                            document.write( A[i] + " ");
+                        }
+                        
+                        
+                        var arr = [ 12, 11, 13, 5, 6, 7 ];
+                            var arr_size = arr.length;
+                        
+                            document.write( "Given array is <br>");
+                            printArray(arr, arr_size);
+                        
+                            mergeSort(arr, 0, arr_size - 1);
+                        
+                            document.write( "<br>Sorted array is <br>");
+                            printArray(arr, arr_size);
+                        
+                       
+                      
+                                                                                           
+
+              </code>
+
+              <code id="code_java" class="language-java">
+               
+
+                /* Java program for Merge Sort */
+                class MergeSort {
+                    // Merges two subarrays of arr[].
+                    // First subarray is arr[l..m]
+                    // Second subarray is arr[m+1..r]
+                    void merge(int arr[], int l, int m, int r)
+                    {
+                        // Find sizes of two subarrays to be merged
+                        int n1 = m - l + 1;
+                        int n2 = r - m;
+                
+                        /* Create temp arrays */
+                        int L[] = new int[n1];
+                        int R[] = new int[n2];
+                
+                        /*Copy data to temp arrays*/
+                        for (int i = 0; i < n1; ++i)
+                            L[i] = arr[l + i];
+                        for (int j = 0; j < n2; ++j)
+                            R[j] = arr[m + 1 + j];
+                
+                        /* Merge the temp arrays */
+                
+                        // Initial indexes of first and second subarrays
+                        int i = 0, j = 0;
+                
+                        // Initial index of merged subarray array
+                        int k = l;
+                        while (i < n1 && j < n2) {
+                            if (L[i] <= R[j]) {
+                                arr[k] = L[i];
+                                i++;
+                            }
+                            else {
+                                arr[k] = R[j];
+                                j++;
+                            }
+                            k++;
+                        }
+                
+                        /* Copy remaining elements of L[] if any */
+                        while (i < n1) {
+                            arr[k] = L[i];
+                            i++;
+                            k++;
+                        }
+                
+                        /* Copy remaining elements of R[] if any */
+                        while (j < n2) {
+                            arr[k] = R[j];
+                            j++;
+                            k++;
+                        }
+                    }
+                
+                    // Main function that sorts arr[l..r] using
+                    // merge()
+                    void sort(int arr[], int l, int r)
+                    {
+                        if (l < r) {
+                            // Find the middle point
+                            int m = l + (r - l) / 2;
+                
+                            // Sort first and second halves
+                            sort(arr, l, m);
+                            sort(arr, m + 1, r);
+                
+                            // Merge the sorted halves
+                            merge(arr, l, m, r);
+                        }
+                    }
+                
+                    /* A utility function to print array of size n */
+                    static void printArray(int arr[])
+                    {
+                        int n = arr.length;
+                        for (int i = 0; i < n; ++i)
+                            System.out.print(arr[i] + " ");
+                        System.out.println();
+                    }
+                
+                    // Driver code
+                    public static void main(String args[])
+                    {
+                        int arr[] = { 12, 11, 13, 5, 6, 7 };
+                
+                        System.out.println("Given Array");
+                        printArray(arr);
+                
+                        MergeSort ob = new MergeSort();
+                        ob.sort(arr, 0, arr.length - 1);
+                
+                        System.out.println("\nSorted array");
+                        printArray(arr);
+                    }
+                }
+                
+                
+
+
+
+              </code>
+
+              <code id="code_python" class="language-python">
+               
+ # Python program for implementation of MergeSort 
+   def mergeSort(arr):
+	    if len(arr) > 1:
+
+		# Finding the mid of the array
+		mid = len(arr)//2
+
+		# Dividing the array elements
+		L = arr[:mid]
+
+		# into 2 halves
+		R = arr[mid:]
+
+		# Sorting the first half
+		mergeSort(L)
+
+		# Sorting the second half
+		mergeSort(R)
+
+		i = j = k = 0
+
+		# Copy data to temp arrays L[] and R[]
+		while i < len(L) and j < len(R):
+			if L[i] <= R[j]:
+				arr[k] = L[i]
+				i += 1
+			else:
+				arr[k] = R[j]
+				j += 1
+			k += 1
+
+		# Checking if any element was left
+		while i < len(L):
+			arr[k] = L[i]
+			i += 1
+			k += 1
+
+		while j < len(R):
+			arr[k] = R[j]
+			j += 1
+			k += 1
+
+# Code to print the list
+
+
+def printList(arr):
+	for i in range(len(arr)):
+		print(arr[i], end=" ")
+	print()
+
+
+# Driver Code
+if __name__ == '__main__':
+	arr = [12, 11, 13, 5, 6, 7]
+	print("Given array is", end="\n")
+	printList(arr)
+	mergeSort(arr)
+	print("Sorted array is: ", end="\n")
+	printList(arr)
+
+
+                
+
+                
+              </code>
+
+              <code id="code_c++" class="language-c">
+
+                /* C program for Merge Sort */
+                #include<stdio.h>
+                #include<stdlib.h>
+                
+                // Merges two subarrays of arr[].
+                // First subarray is arr[l..m]
+                // Second subarray is arr[m+1..r]
+                void merge(int arr[], int l, int m, int r)
+                {
+                    int i, j, k;
+                    int n1 = m - l + 1;
+                    int n2 = r - m;
+                
+                    /* create temp arrays */
+                    int L[n1], R[n2];
+                
+                    /* Copy data to temp arrays L[] and R[] */
+                    for (i = 0; i < n1; i++)
+                        L[i] = arr[l + i];
+                    for (j = 0; j < n2; j++)
+                        R[j] = arr[m + 1 + j];
+                
+                    /* Merge the temp arrays back into arr[l..r]*/
+                    i = 0; // Initial index of first subarray
+                    j = 0; // Initial index of second subarray
+                    k = l; // Initial index of merged subarray
+                    while (i < n1 && j < n2) {
+                        if (L[i] <= R[j]) {
+                            arr[k] = L[i];
+                            i++;
+                        }
+                        else {
+                            arr[k] = R[j];
+                            j++;
+                        }
+                        k++;
+                    }
+                
+    /* Copy the remaining elements of L[], if there are any */
+                    while (i < n1) {
+                        arr[k] = L[i];
+                        i++;
+                        k++;
+                    }
+                
+      /* Copy the remaining elements of R[], if there are any */
+                    while (j < n2) {
+                        arr[k] = R[j];
+                        j++;
+                        k++;
+                    }
+                }
+                
+                /* l is for left index and r is right index of the
+                sub-array of arr to be sorted */
+                void mergeSort(int arr[], int l, int r)
+                {
+                    if (l < r) {
+            // Same as (l+r)/2, but avoids overflow for
+                // large l and h
+                        int m = l + (r - l) / 2;
+                
+                        // Sort first and second halves
+                        mergeSort(arr, l, m);
+                        mergeSort(arr, m + 1, r);
+                
+                        merge(arr, l, m, r);
+                    }
+                }
+                
+                /* UTILITY FUNCTIONS */
+                /* Function to print an array */
+                void printArray(int A[], int size)
+                {
+                    int i;
+                    for (i = 0; i < size; i++)
+                        printf("%d ", A[i]);
+                    printf("\n");
+                }
+                
+                /* Driver code */
+                int main()
+                {
+                    int arr[] = { 12, 11, 13, 5, 6, 7 };
+                    int arr_size = sizeof(arr) / sizeof(arr[0]);
+                
+                    printf("Given array is \n");
+                    printArray(arr, arr_size);
+                
+                    mergeSort(arr, 0, arr_size - 1);
+                
+                    printf("\nSorted array is \n");
+                    printArray(arr, arr_size);
+                    return 0;
+                }
+                
+              </code>
+            </pre>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+   </section>
+
+
+    <!-- about us Section end -->
+
+    <!-- our services secction start -->
+
+    </body>
+
+    <script src="prism.js"></script>
+    <script src="script_change.js"></script>
+    <script src="script_change2.js"></script>
+</html>
