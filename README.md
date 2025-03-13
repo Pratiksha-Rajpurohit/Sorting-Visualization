@@ -1,5 +1,7 @@
 # Algo Space 🌌  
 A clean and interactive website for exploring algorithms, built with **HTML**, **CSS**, and **JavaScript**.
+- Web-site that visualizes different sorting algorithms in action
+- Helps users understand how sorting works step-by-step
 
 ---
 
